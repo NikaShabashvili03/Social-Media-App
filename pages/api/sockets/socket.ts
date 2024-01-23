@@ -7,7 +7,7 @@ export default function handler(req: any, res: any){
     res.end();
     return;
   }
-  res.set('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Origin', '*');
 
 
   let users = [] as any;
