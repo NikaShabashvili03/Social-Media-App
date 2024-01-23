@@ -7,7 +7,14 @@ export default function handler(req: any, res: any){
     res.end();
     return;
   }
-  res.setHeader('Access-Control-Allow-Origin', '*');
+  req.headers.set("Access-Control-Allow-Origin", "*");
+  req.headers.set("Access-Control-Allow-Methods", "POST");
+  req.headers.set("Access-Control-Allow-Headers", "Content-Type");
+
+  res.headers.set("Access-Control-Allow-Origin", "*");
+  res.headers.set("Access-Control-Allow-Methods", "POST");
+  res.headers.set("Access-Control-Allow-Headers", "Content-Type");
+
 
 
   let users = [] as any;
