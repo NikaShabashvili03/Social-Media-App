@@ -14,7 +14,7 @@ export default function handler(req: any, res: any){
     path: 'https://social-media-mqur4fojf-nikashabashvili03.vercel.app/api/socket_io',
     addTrailingSlash: false,
     cors: { 
-      origin: "https://social-media-mqur4fojf-nikashabashvili03.vercel.app",
+      origin: "*",
       methods: ["GET", "POST"]
     },
     transports: ['websocket', 'polling'],
