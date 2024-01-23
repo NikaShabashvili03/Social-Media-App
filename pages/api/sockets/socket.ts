@@ -16,7 +16,7 @@ export default function handler(req: any, res: any){
     addTrailingSlash: false,
     cors: { origin: "*" },
     transports: ['websocket', 'polling'],
-  })
+  }).listen(3001)
 
   res.socket.server.io = io;
 
