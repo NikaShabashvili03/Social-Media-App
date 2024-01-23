@@ -13,7 +13,7 @@ export default function handler(req: any, res: any){
     path: 'https://roaring-twilight-b141de.netlify.app/api/socket_io',
     addTrailingSlash: false,
     cors: { 
-      origin: "https://roaring-twilight-b141de.netlify.app",
+      origin: "*",
       methods: ["GET", "POST"]
     },
     transports: ['websocket', 'polling'],
