@@ -13,10 +13,10 @@ export default function handler(req: any, res: any){
 
   let users = [] as any;
   const io = new Server(res.socket.server,  {
-    path: 'https://social-media-app-psi-three.vercel.app/api/socket_io',
+    path: 'https://roaring-twilight-b141de.netlify.app/api/socket_io',
     addTrailingSlash: false,
     cors: { 
-      origin: "https://social-media-app-psi-three.vercel.app",
+      origin: "https://roaring-twilight-b141de.netlify.app",
       methods: ["GET", "POST"]
     },
     transports: ['websocket', 'polling'],
