@@ -1,6 +1,6 @@
 import { Server } from "socket.io";
-import prisma from '@/app/libs/prismadb'
-import getCurrentUser from "@/app/actions/getCurrentUser";
+import prisma from '@/app/libs/prismadb';
+
 export default function handler(req: any, res: any){
   if(res.socket.server.io){
     console.log("Server alredy started!");
@@ -12,8 +12,9 @@ export default function handler(req: any, res: any){
   const io = new Server(res.socket.server,  {
     path: '/api/socket_io',
     addTrailingSlash: false,
+    cors: { origin: "*" },
     transports: ['websocket','polling'],
-  })
+  }).listen(3000 + 1)
 
   res.socket.server.io = io;
 
