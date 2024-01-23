@@ -7,18 +7,18 @@ export default function handler(req: any, res: any){
     res.end();
     return;
   }
-  res.setHeader("Access-Control-Allow-Origin", "*");
-  res.setHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  // res.setHeader("Access-Control-Allow-Origin", "*");
+  // res.setHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
 
 
   let users = [] as any;
   const io = new Server(res.socket.server,  {
     path: 'https://social-media-mqur4fojf-nikashabashvili03.vercel.app/api/socket_io',
     addTrailingSlash: false,
-    cors: { 
-      origin: "*",
-      methods: ["GET", "POST"]
-    },
+    // cors: { 
+    //   origin: "*",
+    //   methods: ["GET", "POST"]
+    // },
     transports: ['websocket', 'polling'],
   })
 
