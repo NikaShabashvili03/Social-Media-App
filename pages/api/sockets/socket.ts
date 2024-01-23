@@ -10,11 +10,11 @@ export default function handler(req: any, res: any){
 
   let users = [] as any;
   const io = new Server(res.socket.server,  {
-    path: '/api/socket_io',
+    path: 'https://roaring-twilight-b141de.netlify.app/api/socket_io',
     addTrailingSlash: false,
     cors: { origin: "*" },
     transports: ['websocket','polling'],
-  }).listen(3000 + 1)
+  })
 
   res.socket.server.io = io;
 
