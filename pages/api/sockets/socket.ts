@@ -13,7 +13,10 @@ export default function handler(req: any, res: any){
   const io = new Server(res.socket.server,  {
     path: 'https://social-media-mqur4fojf-nikashabashvili03.vercel.app/api/socket_io',
     addTrailingSlash: false,
-    cors: { origin: "*" },
+    cors: { 
+      origin: "https://social-media-mqur4fojf-nikashabashvili03.vercel.app",
+      methods: ["GET", "POST"]
+    },
     transports: ['websocket', 'polling'],
   })
 
