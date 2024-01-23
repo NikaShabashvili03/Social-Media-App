@@ -14,7 +14,6 @@ export default function handler(req: any, res: any){
     addTrailingSlash: false,
     cors: { 
       origin: "*",
-      methods: ["GET", "POST"]
     },
     transports: ['websocket', 'polling'],
   })
