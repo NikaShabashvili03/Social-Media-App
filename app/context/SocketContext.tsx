@@ -22,7 +22,7 @@ const SocketContext: React.FC<ContainerProps> = ({ children, currentUser }) => {
   }, [])
 
   const socketInitializer = async () => {
-    await fetch('https://roaring-twilight-b141de.netlify.app:3001/api/sockets/socket');
+    await fetch('https://roaring-twilight-b141de.netlify.app/api/sockets/socket');
     if(!socket.connected){
         socket.on('disconnect', () => {
             console.log("Disconnect")
