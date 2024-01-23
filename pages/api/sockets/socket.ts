@@ -9,7 +9,7 @@ export default function handler(req: any, res: any){
     return;
   }
 
-  const path = 'https://roaring-twilight-b141de.netlify.app/api/socket_io';
+  const path = 'social-media-app-gamma-three.vercel.app/api/socket_io';
   const httpServer: NetServer = res.socket.server as any;
 
   let users = [] as any;
