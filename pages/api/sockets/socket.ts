@@ -229,7 +229,7 @@ export default function handler(req: any, res: any){
             },
             data: {
               likes: {
-                set: comment?.likes.filter((id) => id !== obj.userId)
+                set: comment?.likes.filter((id: any) => id !== obj.userId)
               }
             }
           })
@@ -298,7 +298,7 @@ export default function handler(req: any, res: any){
             },
             data: {
               likes: {
-                set: post?.likes.filter((id) => id !== obj.userId)
+                set: post?.likes.filter((id: any) => id !== obj.userId)
               }
             }
           })
@@ -323,7 +323,7 @@ export default function handler(req: any, res: any){
         }
       })
 
-      if(!current?.following.some((itm) => itm == obj.userId)){
+      if(!current?.following.some((itm: any) => itm == obj.userId)){
         await prisma.user.update({
           where: {
             id: obj.currentId
@@ -337,7 +337,7 @@ export default function handler(req: any, res: any){
         
       }
 
-      if(!user?.followers.some((itm) => itm == obj.currentId)){
+      if(!user?.followers.some((itm: any) => itm == obj.currentId)){
         await prisma.user.update({
           where: {
             id: obj.userId
@@ -406,28 +406,28 @@ export default function handler(req: any, res: any){
         }
       })
 
-      if(current?.following.some((itm) => itm == obj.userId)){
+      if(current?.following.some((itm: any) => itm == obj.userId)){
         await prisma.user.update({
           where: {
             id: obj.currentId
           },
           data: {
             following: {
-              set: current?.following.filter((id) => id !== obj.userId)
+              set: current?.following.filter((id: any) => id !== obj.userId)
             }
           }
         })
         
       }
 
-      if(user?.followers.some((itm) => itm == obj.currentId)){
+      if(user?.followers.some((itm: any) => itm == obj.currentId)){
         await prisma.user.update({
           where: {
             id: obj.userId
           },
           data: {
             followers: {
-              set: user?.following.filter((id) => id !== obj.currentId)
+              set: user?.following.filter((id: any) => id !== obj.currentId)
             }
           }
         })
