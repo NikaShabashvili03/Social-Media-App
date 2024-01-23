@@ -13,12 +13,12 @@ export default function handler(req: any, res: any){
 
   let users = [] as any;
   const io = new Server(res.socket.server,  {
-    path: 'https://social-media-mqur4fojf-nikashabashvili03.vercel.app/api/socket_io',
+    path: 'https://social-media-app-psi-three.vercel.app/api/socket_io',
     addTrailingSlash: false,
-    // cors: { 
-    //   origin: "*",
-    //   methods: ["GET", "POST"]
-    // },
+    cors: { 
+      origin: "https://social-media-app-psi-three.vercel.app",
+      methods: ["GET", "POST"]
+    },
     transports: ['websocket', 'polling'],
   })
 

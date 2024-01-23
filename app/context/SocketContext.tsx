@@ -22,7 +22,7 @@ const SocketContext: React.FC<ContainerProps> = ({ children, currentUser }) => {
   }, [])
 
   const socketInitializer = async () => {
-    await fetch('https://social-media-mqur4fojf-nikashabashvili03.vercel.app/api/sockets/socket');
+    await fetch('https://social-media-app-psi-three.vercel.app/api/sockets/socket');
     if(!socket.connected){
         socket.on('disconnect', () => {
             console.log("Disconnect")

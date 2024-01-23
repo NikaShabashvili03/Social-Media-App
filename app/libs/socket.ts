@@ -2,7 +2,7 @@
 import io from "socket.io-client";
 
 const socket = io({
-    path: 'https://social-media-mqur4fojf-nikashabashvili03.vercel.app/api/socket_io',
+    path: 'https://social-media-app-psi-three.vercel.app/api/socket_io',
 })
 
 export default socket;
