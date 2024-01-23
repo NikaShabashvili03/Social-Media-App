@@ -122,7 +122,7 @@ export default function handler(req: any, res: any){
         }
       })
 
-      if(!current?.following.some((itm) => itm == obj.userId)){
+      if(!current?.following.some((itm: any) => itm == obj.userId)){
         await prisma.user.update({
           where: {
             id: obj.currentId
@@ -136,7 +136,7 @@ export default function handler(req: any, res: any){
         
       }
 
-      if(!user?.followers.some((itm) => itm == obj.currentId)){
+      if(!user?.followers.some((itm: any) => itm == obj.currentId)){
         await prisma.user.update({
           where: {
             id: obj.userId
