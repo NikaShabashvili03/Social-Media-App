@@ -36,7 +36,7 @@ export default async function getMessagesByConversation() {
     }
     
 
-    return conversations.flatMap((conversation) => (
+    return conversations.flatMap((conversation: any) => (
         conversation.messages
     ))
 
