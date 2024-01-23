@@ -33,7 +33,7 @@ export default async function getConversations() {
       return null;
     }
 
-    return conversations.map((conversation) => (
+    return conversations.map((conversation: any) => (
         {...conversation,
             user: allUsers.filter((itm: any) => conversation.users.includes(itm.id))[0]
         }
