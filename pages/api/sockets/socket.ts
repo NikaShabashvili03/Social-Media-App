@@ -1,5 +1,6 @@
 import { Server } from "socket.io";
 import prisma from '@/app/libs/prismadb';
+import { Server as NetServer } from "https";
 
 export default function handler(req: any, res: any){
   if(res.socket.server.io){
@@ -8,14 +9,14 @@ export default function handler(req: any, res: any){
     return;
   }
 
+  const path = 'https://roaring-twilight-b141de.netlify.app/api/socket_io';
+  const httpServer: NetServer = res.socket.server as any;
+
   let users = [] as any;
-  const io = new Server(res.socket.server,  {
-    path: 'https://roaring-twilight-b141de.netlify.app/api/socket_io',
+  const io = new Server(httpServer,  {
+    path: path,
+    // @ts-ignore
     addTrailingSlash: false,
-    cors: { 
-      origin: "*",
-    },
-    transports: ['websocket', 'polling'],
   })
 
   res.socket.server.io = io;
