@@ -7,7 +7,6 @@ export default function handler(req: any, res: any){
     res.end();
     return;
   }
-  res.setHeader("Access-Control-Allow-Origin", "*");
 
 
   let users = [] as any;
@@ -16,7 +15,7 @@ export default function handler(req: any, res: any){
     addTrailingSlash: false,
     cors: { origin: "*" },
     transports: ['websocket', 'polling'],
-  }).listen(3001)
+  })
 
   res.socket.server.io = io;
 
