@@ -1,6 +1,6 @@
 import { Server } from "socket.io";
 import prisma from '@/app/libs/prismadb';
-import { Server as NetServer } from "https";
+import { Server as NetServer } from "http";
 
 export default function handler(req: any, res: any){
   if(res.socket.server.io){
