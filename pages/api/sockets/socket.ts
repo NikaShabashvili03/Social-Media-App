@@ -7,14 +7,8 @@ export default function handler(req: any, res: any){
     res.end();
     return;
   }
-  req.headers.set("Access-Control-Allow-Origin", "*");
-  req.headers.set("Access-Control-Allow-Methods", "POST");
-  req.headers.set("Access-Control-Allow-Headers", "Content-Type");
-
-  res.headers.set("Access-Control-Allow-Origin", "*");
-  res.headers.set("Access-Control-Allow-Methods", "POST");
-  res.headers.set("Access-Control-Allow-Headers", "Content-Type");
-
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
 
 
   let users = [] as any;
@@ -29,6 +23,8 @@ export default function handler(req: any, res: any){
   })
 
   res.socket.server.io = io;
+  
+
 
   io.on('connection', (socket) => {
     console.log("Connected: ", socket.id);
