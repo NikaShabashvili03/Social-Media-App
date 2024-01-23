@@ -7,9 +7,6 @@ export default function handler(req: any, res: any){
     res.end();
     return;
   }
-  // res.setHeader("Access-Control-Allow-Origin", "*");
-  // res.setHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-  res.Header().Set("Access-Control-Allow-Origin", "*")
 
   let users = [] as any;
   const io = new Server(res.socket.server,  {
