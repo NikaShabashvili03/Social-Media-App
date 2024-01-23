@@ -1,0 +1,114 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "./generated/client"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+
+model User {
+  id              String   @id @default(auto()) @map("_id") @db.ObjectId
+  firstName       String
+  lastName        String
+  fullName        String
+  email           String   @unique
+  hashedPassword  String
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  avatarUrl       String?
+  following       String[]
+  followers       String[]
+
+  isActive        Boolean @default(false)
+  messages        Message[]
+
+  notification         Notification[]
+  notificationSender   Notification[] @relation("senderUser")
+
+  posts                Post[]
+  comments              Comment[]
+}
+
+
+model Conversation {
+  id              String   @id @default(auto()) @map("_id") @db.ObjectId
+  
+  users           String[]
+
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  messages        Message[]
+}
+
+model Message {
+  id              String   @id @default(auto()) @map("_id") @db.ObjectId
+
+  message         String?
+  images          String[]
+
+  conversationId  String
+  conversation Conversation @relation(fields: [conversationId], references: [id], onDelete: Cascade)
+
+  userId          String
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+
+  seen            Boolean @default(false)
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+}
+
+
+model Notification {
+  id              String   @id @default(auto()) @map("_id") @db.ObjectId
+  userId          String
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  content         String
+  link            String
+
+  senderUserId    String
+  senderUser User @relation("senderUser", fields: [senderUserId], references: [id], onDelete: Cascade)
+
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+}
+
+
+model Post {
+  id              String   @id @default(auto()) @map("_id") @db.ObjectId
+  userId          String
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  images           String[]
+  title            String?
+
+  likes            String[]
+  
+  comments        Comment[]
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+}
+
+
+model Comment {
+  id              String   @id @default(auto()) @map("_id") @db.ObjectId
+  userId          String
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  postId          String
+  post Post @relation(fields: [postId], references: [id], onDelete: Cascade)
+  
+  content         String
+  likes           String[]
+
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+}
